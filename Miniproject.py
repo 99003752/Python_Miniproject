@@ -1,12 +1,13 @@
 import re
 Input_file=open("Input.txt")
+Keyword=input("Enter the word to search\n")
 count=0
 for line in Input_file:
     file_line=Input_file.readline()
-    match=re.search("software",file_line,re.M|re.I)
+    match=re.findall(Keyword,file_line,re.M|re.I)
     if match:
         count+=1
-       # print(line)
+        print(line)
         print(file_line)
     else:
         continue
