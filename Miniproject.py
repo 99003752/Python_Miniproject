@@ -1,5 +1,8 @@
 '''
-Discription:This file contains the code to count the Keywords in file'''
+Discription:This file contains the code to count the Keywords in file
+Author:Sushma
+Date:22/02/2021
+'''
 import re
 Input_file=open("Input.txt")
 Keyword=input("Enter the word to search\n")
@@ -14,6 +17,10 @@ if match:
 #    if match:
  #       count+=1
        # print(line)
-       # ripnt(file_line)
+       # print(file_line)
 #print(count)
+Output_file_name=Keyword+".txt"
+Output_file=open(Output_file_name,"w")
+Output_file.write(str(len(match)))
 Input_file.close()
+Output_file.close()
