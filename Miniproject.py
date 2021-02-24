@@ -1,29 +1,34 @@
-'''
+"""
 Discription:This file contains the code to count the Keywords in file
 Author:Sushma
 Date:22/02/2021
-'''
+"""
 import re
-Input_file=open("Input.txt")
-Keyword=input("Enter the word to search\n")
-count=0
-read_file=Input_file.read()
-match=re.findall(Keyword,read_file,re.M|re.I)
-if match:
-    print(len(match))
-'''Input_file.close()
-Input_file=open("Input.txt")
-file_line=Input_file.readlines()
-for line in file_line:
-    match=re.findall(Keyword,line,re.M|re.I)
-    if match:
-        count+=1
-        print(line)
-        print(file_line)
-print(count)
-Input_file.close()'''
-Output_file_name=Keyword+".txt"
-Output_file=open(Output_file_name,"w")
-Output_file.write(str(len(match)))
-Input_file.close()
-Output_file.close()
+class myclass:
+    def __init__(self):
+        self.Keyword=input("Enter keyword\n")
+        self.Output_file_name = self.Keyword+".txt"
+        self.Input_file=open("Input.txt","r")
+        self.Output_file = open(self.Output_file_name, "w")
+        self.count=0
+    def File_read(self):
+        file_read=self.Input_file.read()
+        file=file_read.split()
+        file1=re.split(r"\W",str(file))
+        return file1
+    def Match_Keyword(self,file1):
+        for i in range(len(file1)):
+            match=re.fullmatch(self.Keyword,file1[i],re.M|re.I)
+            if match:
+                self.count+=1 
+                str1=file1[i-8]+" "+file1[i-4]+" "+file1[i]+" "+file1[i+4]+" "+file1[i+8]+" "
+                self.Output_file.write(str(str1))
+                self.Output_file.write("\n")
+        self.Output_file.write(str(self.count))
+    def Close_file(self):
+        self.Input_file.close()
+        self.Output_file.close()
+myobj=myclass()
+file1=myobj.File_read()
+myobj.Match_Keyword(file1)
+myobj.Close_file()
