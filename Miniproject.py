@@ -6,7 +6,7 @@ Date:22/02/2021
 import re  # Importing Regular expression module
 
 
-class Myclass:  # Class for file handling and match operation
+class Myclass:  # Class for file handling
 
     def __init__(self, keyword2):  # instance
         self.Keyword = keyword2  # Keyword to search
@@ -16,7 +16,7 @@ class Myclass:  # Class for file handling and match operation
         self.Output_file = open(self.Output_file_name, "w")
 
 
-class Readclass(Myclass):
+class Readclass(Myclass):  # Class to read the file
 
     def file_read(self):  # method to read file
         file_read = self.Input_file.read()
@@ -25,7 +25,7 @@ class Readclass(Myclass):
         return file1  # return List
 
 
-class Matchclass(Readclass):
+class Matchclass(Readclass):  # Class to Match Keyword
     def match_keyword(self, file1):  # Method to Match the keyword
         for i in range(len(file1)):
             match = re.fullmatch(self.Keyword, file1[i], re.M | re.I)
