@@ -1,7 +1,9 @@
 """
+File Name:Miniproject.py
 Description:This file contains the code to count the Keywords in file
-Author:Sushma
 Date:22/02/2021
+Author:Sushma
+PS number:99003752
 """
 import re  # Importing Regular expression module
 
@@ -43,13 +45,21 @@ class Matchclass(Readclass):  # Class to Match Keyword
 
 
 if __name__ == "__main__":
-    number = int(input("How many keywords you want to enter\n"))
-    while number != 0:
-        keyword = input("Enter Keyword\n")  # Taking input from user
-        myobj = Myclass(keyword)  # Creating object to class
-        myobj1 = Readclass(keyword)
-        myobj2 = Matchclass(keyword)
-        file2 = myobj1.file_read()
-        myobj2.match_keyword(file2)
-        number -= 1
-        myobj2.close_file()
+    number = input("How many keywords you want to enter\n")
+    flag = True
+    while flag:
+        if number.isdigit():
+            number = int(number)
+            flag = False
+            while number != 0:
+                keyword = input("Enter Keyword\n")  # Taking input from user
+                myobj = Myclass(keyword)  # Creating object to class
+                myobj1 = Readclass(keyword)
+                myobj2 = Matchclass(keyword)
+                file2 = myobj1.file_read()
+                myobj2.match_keyword(file2)
+                number -= 1
+                myobj2.close_file()
+        else:
+            print("Enter Valid Input\n")
+            number = input("How many keywords you want to enter\n")
